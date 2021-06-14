@@ -1,0 +1,17 @@
+{
+  "name": "fortnitify-authgg-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "im2rnado",
+  "license": "MIT",
+  "dependencies": {
+    "authgg-admin-api": "^1.0.3",
+    "discord.js": "^12.5.3",
+    "eslint": "^7.28.0",
+    "lodash": "^4.17.21"
+  }
+}
