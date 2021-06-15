@@ -14,12 +14,7 @@ module.exports = {
 		const loading = await message.channel.send("<a:loading:853778455836885012> Getting version");
 
 		try {
-			const { data } = await axios.get("https://raw.githubusercontent.com/Im2rnado/Fortnitify/main/version.txt", {
-				headers: {
-					"Content-Type": "text/plain",
-					"Accept": "text/plain",
-				},
-			});
+			const { data } = await axios.get("https://raw.githubusercontent.com/Im2rnado/Fortnitify/main/version.txt");
 
 			const embed = new Discord.MessageEmbed()
 				.setColor("RED")
