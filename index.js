@@ -1,12 +1,12 @@
 const fs = require("fs");
 const Discord = require("discord.js");
 const config = require("./config.json");
-const AuthGG = require("authgg-admin-api");
+const AuthGG = require("./lib");
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 client.config = config;
-client.API = new AuthGG.API(config.auth);
+client.API = new AuthGG(config.auth);
 
 // functions
 function ImportCommands() {

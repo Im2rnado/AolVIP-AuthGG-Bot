@@ -29,7 +29,7 @@ module.exports = {
 				loading.edit("", grantEmbed);
 			}
 			else if (selection == "license") {
-				await client.API.deleteLicense(input.replace("FORTNITIFY-", ""));
+				await client.API.deleteLicense(input);
 
 				const grantEmbed = new Discord.MessageEmbed()
 					.setTitle(`✅ Successfully Deleted License ${input}`)
@@ -40,7 +40,7 @@ module.exports = {
 				loading.edit("", grantEmbed);
 			}
 			else if (selection.startsWith("FORTNITIFY-")) {
-				await client.API.deleteLicense(selection.replace("FORTNITIFY-", ""));
+				await client.API.deleteLicense(selection);
 
 				const grantEmbed = new Discord.MessageEmbed()
 					.setTitle(`✅ Successfully Deleted License ${selection}`)
@@ -51,7 +51,15 @@ module.exports = {
 				loading.edit("", grantEmbed);
 			}
 			else {
-				loading.delete();
+				await client.API.deleteUser(input);
+
+				const grantEmbed = new Discord.MessageEmbed()
+					.setTitle(`✅ Successfully Deleted User ${input}`)
+					.setColor("#43B581")
+					.setTimestamp()
+					.setFooter(`Requested by: ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
+
+				loading.edit("", grantEmbed);
 			}
 		}
 		catch (error) {

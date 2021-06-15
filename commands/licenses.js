@@ -1,9 +1,9 @@
 const Discord = require("discord.js");
 
 module.exports = {
-	name: "license",
-	description: "Retrieves list of all license from Auth.GG API",
-	aliases: ["licenses"],
+	name: "licenses",
+	description: "Retrieves list of all licenses from Auth.GG API",
+	aliases: ["license"],
 	adminOnly: true,
 	/**
      * @param {Discord.Message} message
@@ -58,7 +58,7 @@ function GenerateEmbed(data, index) {
 		.setColor("#00ff3c")
 		.setDescription(`Displaying ${index + 1}-${index + current.length} out of ${data.length} licenses`);
 	current.forEach(arr => dataEmbed.addFields(
-		{ name: "License: ", value: "FORTNITIFY-" + arr.token, inline: true },
+		{ name: "License: ", value: arr.token, inline: true },
 		{ name: "Days: ", value: arr.days, inline: true },
 		{ name: "\u200B", value: "\u200B", inline: true },
 	));

@@ -17,14 +17,14 @@ module.exports = {
 		const loading = await message.channel.send("<a:loading:853778455836885012> Generating key");
 
 		try {
-			const keys = await client.API.generateLicense(days, amount, 1, 2);
+			const keys = await client.API.generateLicense(days, amount, 1, 3, "FORTNITIFY");
 			loading.delete();
 			message.react("✅");
 
 			const object = Object.keys(keys);
 
 			for (const key of object) {
-				message.author.send("FORTNITIFY-" + keys[key]);
+				message.author.send(keys[key]);
 			}
 		}
 		catch (error) {
