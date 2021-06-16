@@ -21,7 +21,7 @@ module.exports = {
 				.setTitle("**Fortnitify Checker**")
 				.setThumbnail(client.user.displayAvatarURL())
 				.setFooter("Made by tornado#9999")
-				.addField("Version", data.toFixed(1))
+				.addField("Version", data.isNaN() ? data : data.toFixed(1))
 				.addField("RAM Usage", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB`);
 
 			loading.edit("", embed);

@@ -5,9 +5,9 @@ module.exports = {
 	name: "help",
 	description: "Get all commands",
 	/**
-     * @param {Discord.Message} message
-     * @param {String[]} args
-     */
+	 * @param {Discord.Message} message
+	 * @param {String[]} args
+	 */
 	async execute(message, args, client) {
 		let { commands } = client;
 
@@ -15,7 +15,10 @@ module.exports = {
 
 			const commandsPerPage = 9;
 
-			commands = Array.from(commands, ([ name, value ]) => ({ name, value }));
+			commands = Array.from(commands, ([name, value]) => ({
+				name,
+				value,
+			}));
 			let pages = _.chunk(commands, commandsPerPage);
 
 			pages = pages.map((page, index) => {
@@ -42,7 +45,9 @@ module.exports = {
 			msg.react("➡️");
 			msg.react("⏭️");
 
-			msg.delete({ timeout: 250000 }).catch();
+			msg.delete({
+				timeout: 250000,
+			}).catch();
 
 			const collector = msg.createReactionCollector((reaction, user) => user.id === message.author.id);
 
@@ -88,43 +93,45 @@ module.exports = {
 			return message.channel.send(yourEmbed);
 			*/
 		}
+		else {
 
-		const name = args.join(" ").toLowerCase();
-		let command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
+			const name = args.join(" ").toLowerCase();
+			let command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
 
-		if (!command) {
-			const exiss = commands.find(c => c.category && c.category.toLowerCase().includes(name));
-			if (exiss) {
-				command = commands.filter(c => c.category === exiss.category);
-				const embed1 = new Discord.MessageEmbed()
-					.setTitle(":mailbox_with_mail: " + args.join(" "))
-					.setColor("RANDOM")
-					.setFooter("Made by tornado#9999");
+			if (!command) {
+				const exiss = commands.find(c => c.category && c.category.toLowerCase().includes(name));
+				if (exiss) {
+					command = commands.filter(c => c.category === exiss.category);
+					const embed1 = new Discord.MessageEmbed()
+						.setTitle(":mailbox_with_mail: " + args.join(" "))
+						.setColor("RANDOM")
+						.setFooter("Made by tornado#9999");
 
-				command.forEach((el) => {
-					embed1.addField(el.name, el.description, true);
-				});
+					command.forEach((el) => {
+						embed1.addField(el.name, el.description, true);
+					});
 
-				return message.channel.send(embed1);
+					return message.channel.send(embed1);
+				}
+				else {
+					const embed1010 = new Discord.MessageEmbed()
+						.setColor("RANDOM")
+						.setTitle(`The command **${args.join(" ")}** doesn't exist!`)
+						.setFooter("Need Help? Use .help");
+					return message.channel.send(embed1010);
+				}
 			}
-			else {
-				const embed1010 = new Discord.MessageEmbed()
-					.setColor("RANDOM")
-					.setTitle(`The command **${args.join(" ")}** doesn't exist!`)
-					.setFooter("Need Help? Use .help");
-				return message.channel.send(embed1010);
-			}
+
+			const embed1 = new Discord.MessageEmbed()
+				.setTitle(`:mailbox_with_mail: ${command.name} | Command Help`)
+				.setColor("RANDOM")
+				.setFooter("Need Help? Use .help");
+
+			if (command.aliases) embed1.addField("**Aliases**:", `${command.aliases.join(" - ")}`, true);
+			if (command.description) embed1.addField("**Description**:", `${command.description}`);
+			if (command.category) embed1.addField("**Category**:", `${command.category}`);
+
+			message.channel.send(embed1);
 		}
-
-		const embed1 = new Discord.MessageEmbed()
-			.setTitle(`:mailbox_with_mail: ${command.name} | Command Help`)
-			.setColor("RANDOM")
-			.setFooter("Need Help? Use .help");
-
-		if (command.aliases) embed1.addField("**Aliases**:", `${command.aliases.join(" - ")}`, true);
-		if (command.description) embed1.addField("**Description**:", `${command.description}`);
-		if (command.category) embed1.addField("**Category**:", `${command.category}`);
-
-		message.channel.send(embed1);
 	},
 };
