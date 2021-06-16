@@ -15,6 +15,7 @@ module.exports = {
 
 		try {
 			const { data } = await axios.get("https://raw.githubusercontent.com/Im2rnado/Fortnitify/main/version.txt");
+			console.log(data);
 
 			const embed = new Discord.MessageEmbed()
 				.setColor("RED")
