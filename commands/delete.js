@@ -14,7 +14,7 @@ module.exports = {
 		const selection = args[0];
 		const input = args[1];
 
-		const loading = await message.channel.send(`<a:loading:853778455836885012> Deleting ${selection == "user" ? "user" : "key"}`);
+		const loading = await message.channel.send(`<a:loading:862769697841348630> Deleting ${selection == "user" ? "user" : "key"}`);
 
 		try {
 			if (selection == "user") {
@@ -39,7 +39,7 @@ module.exports = {
 
 				loading.edit("", grantEmbed);
 			}
-			else if (selection.startsWith("FORTNITIFY-")) {
+			else if (selection.startsWith("AolVIP-")) {
 				await client.API.deleteLicense(selection);
 
 				const grantEmbed = new Discord.MessageEmbed()

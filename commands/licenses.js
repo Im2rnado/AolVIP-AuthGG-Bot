@@ -1,16 +1,16 @@
-const Discord = require("discord.js");
+﻿const Discord = require("discord.js");
 
 module.exports = {
 	name: "licenses",
 	description: "Retrieves list of all licenses from Auth.GG API",
-	aliases: ["license"],
+	aliases: ["license", "keys"],
 	adminOnly: true,
 	/**
      * @param {Discord.Message} message
      * @param {String[]} args
      */
 	async execute(message, args, client) {
-		const loading = await message.channel.send("<a:loading:853778455836885012> Getting licenses");
+		const loading = await message.channel.send("<a:loading:862769697841348630> Getting licenses");
 		const data = await client.API.getAllLicense();
 
 		const licenseArray = CreateLicenseArray(data);

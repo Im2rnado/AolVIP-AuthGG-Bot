@@ -10,14 +10,13 @@ module.exports = {
      * @param {String[]} args
      */
 	async execute(message, args, client) {
-		if (!args.length) return;
-		const days = args[0];
+		const days = args[0] ? args[0] : 365;
 		const amount = args[1] ? args[1] : 1;
 
-		const loading = await message.channel.send("<a:loading:853778455836885012> Generating key");
+		const loading = await message.channel.send("<a:loading:862769697841348630> Generating key");
 
 		try {
-			const keys = await client.API.generateLicense(days, amount, 1, 3, "FORTNITIFY");
+			const keys = await client.API.generateLicense(days, amount, 1, 3, "AolVIP");
 			loading.delete();
 			message.react("✅");
 

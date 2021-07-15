@@ -1,10 +1,11 @@
 {
-    "token": "ODUzNzU0NDk1NjgzMjY0NTMz.YMZ-1Q.lfmDVZlQOrnkdFLc_DHOAX00ZBE",
-    "auth": "SIHGUDYZNVQU",
+    "token": "ODYyNzA5MzIyMjc4NzY0NTQ0.YOcSqg.bWlAFrtqNhIql9qI44ykyB_qYC4",
+    "auth": "LJLDBPZNYUBA",
     "prefix": ".",
     "admins": [
-        "843901757493870662"
+        "843901757493870662",
+	    "853872924799533076"
     ],
-    "logs": "853771826177900554",
-    "invite": "https://discord.gg/73NqUE9jZa"
+    "logs": "862759207543111721",
+    "invite": "https://discord.gg/jvkEHGKBcM"
 }

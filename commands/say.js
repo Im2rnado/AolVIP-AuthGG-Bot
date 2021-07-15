@@ -24,7 +24,7 @@ module.exports = {
 
 		if(args[0] === "embed") {
 			sayMessage = args.slice(1).join(" ");
-			embed.setColor("RED");
+			embed.setColor("BLUE");
 			embed.setDescription(sayMessage);
 			return message.channel.send(embed);
 		}

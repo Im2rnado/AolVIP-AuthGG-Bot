@@ -14,7 +14,7 @@ module.exports = {
 		const user = args[0];
 		const pass = args.slice(1).join(" ");
 
-		const loading = await message.channel.send("<a:loading:853778455836885012> Changing password");
+		const loading = await message.channel.send("<a:loading:862769697841348630> Changing password");
 
 		try {
 			await client.API.changeUserPass(user, pass);

@@ -9,7 +9,7 @@ module.exports = {
      * @param {String[]} args
      */
 	async execute(message, args, client) {
-		const loading = await message.channel.send("<a:loading:853778455836885012> Getting users");
+		const loading = await message.channel.send("<a:loading:862769697841348630> Getting users");
 		const data = await client.API.getAllUsers();
 
 		const userArray = CreateUserArray(data);

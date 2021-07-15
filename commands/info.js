@@ -1,4 +1,4 @@
-const Discord = require("discord.js");
+﻿const Discord = require("discord.js");
 
 module.exports = {
 	name: "info",
@@ -14,7 +14,7 @@ module.exports = {
 		const selection = args[0];
 		const input = args[1];
 
-		const loading = await message.channel.send(`<a:loading:853778455836885012> Getting ${selection == "user" ? "user" : "key"} info`);
+		const loading = await message.channel.send(`<a:loading:862769697841348630> Getting ${selection == "user" ? "user" : "key"} info`);
 
 		try {
 			if (selection == "user") {
@@ -29,16 +29,16 @@ module.exports = {
 				const embedMsg = LicenseEmbed(data);
 				loading.edit("", embedMsg);
 			}
-			else if (selection.startsWith("FORTNITIFY-")) {
-				const data = await client.API.getUserInfo(input);
+			else if (selection.startsWith("AolVIP-")) {
+				const data = await client.API.getLicenseInfo(selection);
 
-				const embedMsg = UserEmbed(data);
+				const embedMsg = LicenseEmbed(data);
 				loading.edit("", embedMsg);
 			}
 			else {
-				const data = await client.API.getLicenseInfo(input);
+				const data = await client.API.getUserInfo(selection);
 
-				const embedMsg = LicenseEmbed(data);
+				const embedMsg = UserEmbed(data);
 				loading.edit("", embedMsg);
 			}
 		}

@@ -13,7 +13,7 @@ module.exports = {
 		if (!args.length) return;
 		const user = args[0];
 
-		const loading = await message.channel.send("<a:loading:853778455836885012> Resetting HWID");
+		const loading = await message.channel.send("<a:loading:862769697841348630> Resetting HWID");
 
 		try {
 			await client.API.resetHWID(user);

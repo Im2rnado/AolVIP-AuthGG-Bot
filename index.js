@@ -21,7 +21,7 @@ client.on("ready", () => {
 	ImportCommands();
 
 	function randomStatus() {
-		const status = ["over skinned Fortnite accounts", `${client.users.cache.size} users`];
+		const status = ["over AOL accounts", `${client.users.cache.size} users`];
 		const rstatus = Math.floor(Math.random() * status.length);
 		client.user.setActivity(status[rstatus], { type: "WATCHING" });
 	} setInterval(randomStatus, 20000);
@@ -34,13 +34,13 @@ client.on("ready", () => {
 		.setTitle("Bot is online!")
 		.addField("Total Guilds", client.guilds.cache.size)
 		.addField("Total Commands", client.commands.size)
-		.setFooter("Fortnitify Discord Bot", client.user.displayAvatarURL());
+		.setFooter("AolVIP Discord Bot", client.user.displayAvatarURL());
 	client.channels.cache.get(config.logs).send(OnlineEmbed);
 });
 
 client.on("message", async message => {
 	const prefix = config.prefix;
-	if (!message.content.startsWith(prefix));
+	if (!message.content.startsWith(prefix)) return;
 	if (message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);

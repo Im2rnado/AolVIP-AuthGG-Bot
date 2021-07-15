@@ -28,22 +28,22 @@ module.exports = {
 		i.react("✅").then(() => i.react("❌"));
 
 		const filter = (reaction, user) => {
-			return ["✅", "❌"].includes(reaction.emoji.id) && user.id === message.author.id;
+			return ["✅", "❌"].includes(reaction.emoji.name) && user.id === message.author.id;
 		};
 
 		i.awaitReactions(filter, { max: 1, time: 60000, errors: ["time"] })
 			.then(async collected => {
 				const reaction = collected.first();
 
-				if (reaction.emoji.id === "✅") {
+				if (reaction.emoji.name === "✅") {
 					await i.delete();
 
 					const channel = await message.channel.clone();
-					channel.setPosition(message.channel.position);
-					message.channel.delete();
+					await channel.setPosition(message.channel.position);
+					await message.channel.delete();
 					channel.send(`**Successfully nuked ${channel}**\nhttps://media.giphy.com/media/hvGKQL8lasDvIlWRBC/giphy.gif`);
 				}
-				if (reaction.emoji.id === "❌") {
+				if (reaction.emoji.name === "❌") {
 					await i.delete();
 					message.channel.send("❌ Nuking Cancelled!");
 				}
