@@ -71,6 +71,17 @@ class AuthGG {
 			});
 		});
 	}
+	
+	changeUserRank(user, rank) {
+		const params = `USERS/?type=changepw&authorization=${this.authorisation}&user=${user}&rank=${rank}`;
+		return new Promise((resolve, reject) => {
+			this.apiRequest(params).then(() => {
+				resolve(true);
+			}).catch(err => {
+				reject(err);
+			});
+		});
+	}
 
 	getLicenseInfo(license) {
 		const params = `LICENSES/?type=fetch&authorization=${this.authorisation}&license=${license}`;
