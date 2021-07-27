@@ -73,7 +73,7 @@ class AuthGG {
 	}
 	
 	changeUserRank(user, rank) {
-		const params = `USERS/?type=changepw&authorization=${this.authorisation}&user=${user}&rank=${rank}`;
+		const params = `USERS/?type=editrank&authorization=${this.authorisation}&user=${user}&rank=${rank}`;
 		return new Promise((resolve, reject) => {
 			this.apiRequest(params).then(() => {
 				resolve(true);

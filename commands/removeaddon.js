@@ -1,9 +1,9 @@
 const Discord = require("discord.js");
 
 module.exports = {
-	name: "addon",
-	description: "Grants the addon to a user",
-	aliases: ["grant", "rank"],
+	name: "removeaddon",
+	description: "Removes the addon from a user",
+	aliases: ["revoke", "resetrank"],
 	adminOnly: true,
 	/**
      * @param {Discord.Message} message
@@ -13,13 +13,13 @@ module.exports = {
 		if (!args.length) return;
 		const user = args[0];
 
-		const loading = await message.channel.send("<a:loading:862769697841348630> Granting user addons");
+		const loading = await message.channel.send("<a:loading:862769697841348630> Revoking user addons");
 
 		try {
-			await client.API.changeUserRank(user, "5");
+			await client.API.changeUserRank(user, "1");
 
 			const grantEmbed = new Discord.MessageEmbed()
-				.setTitle(`✅ Successfully Granted ${user} Addons`)
+				.setTitle(`✅ Successfully Revoked ${user}'s Addon`)
 				.setColor("#43B581")
 				.setTimestamp()
 				.setFooter(`Requested by: ${message.author.tag}`, message.author.displayAvatarURL({ dynamic: true }));
